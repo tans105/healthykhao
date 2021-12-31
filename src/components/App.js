@@ -3,6 +3,7 @@ import './App.css'
 
 import React from 'react'
 import {prepare, reset} from "../service/schedule.service";
+import Calendar from "./Calendar/Calendar";
 
 class App extends React.Component {
   constructor() {
@@ -21,9 +22,17 @@ class App extends React.Component {
     }, () => reset())
   }
 
-  render() {
-    const {generateSchedule} = this.state
+  showSchedule() {
+    const {generateSchedule, schedule} = this.state;
 
+    if (generateSchedule) {
+      return <Calendar schedule={schedule}/>
+    } else {
+      return null
+    }
+  }
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -31,6 +40,7 @@ class App extends React.Component {
           <p>
             Ready to generate the weekly menu? Click on the <strong>Button</strong> below.
           </p>
+          {this.showSchedule()}
           <button
             className="button-three"
             onClick={() => this.generate()}
@@ -39,7 +49,6 @@ class App extends React.Component {
           >
             Generate
           </button>
-          {(generateSchedule) && JSON.stringify(this.state.schedule)}
         </header>
       </div>
     )

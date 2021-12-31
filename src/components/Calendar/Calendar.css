@@ -1,0 +1,39 @@
+.calendar-body {
+    width: 100%;
+    margin: 24px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: white;
+}
+
+.week-day, .meal {
+    background: cornflowerblue
+}
+
+.low {
+    background: #04AA6D;;
+}
+
+.medium {
+    background: #f1c40f;
+}
+
+.high {
+    background: red;
+}

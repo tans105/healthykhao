@@ -40,7 +40,7 @@ const SUNDAY = {
   label: 'Sunday'
 }
 
-const WEEK = {
+const WEEK = [
   MONDAY,
   TUESDAY,
   WEDNESDAY,
@@ -48,7 +48,7 @@ const WEEK = {
   FRIDAY,
   SATURDAY,
   SUNDAY
-}
+]
 
 const LOW = {
   hex: 'green',
@@ -82,6 +82,12 @@ const MAIN_COURSE_DISH_TYPE = {
   id: 'mc',
 }
 
+const MEALS = [
+  "Breakfast",
+  "Lunch",
+  "Dinner"
+]
+
 export {
   MONDAY,
   TUESDAY,
@@ -97,4 +103,5 @@ export {
   ANYTHING,
   BREAKFAST_DISH_TYPE,
   MAIN_COURSE_DISH_TYPE,
+  MEALS,
 }

@@ -65,7 +65,6 @@ const getDish = ({id}, dishHealthIndex) => {
     }
   }
 
-  console.log(`${id} - ${dishHealthIndex} - Dish found ${dish}`);
   return dish;
 }
 
