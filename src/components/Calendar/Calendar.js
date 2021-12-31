@@ -23,7 +23,7 @@ class Calendar extends React.Component {
         return <td className="high">{name}</td>
       }
       default: {
-        return <td>{name}</td>
+        return <td>NA</td>
       }
     }
   }
@@ -35,7 +35,7 @@ class Calendar extends React.Component {
       <div className="calendar-body">
         <table>
           <tr>
-            <th></th>
+            <th>Schedule</th>
             {WEEK.map((day, i) => <th key={i} className="cell week-day">{day.label}</th>)}
           </tr>
 
