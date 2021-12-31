@@ -9,7 +9,7 @@ const BREAKFAST = [
   {name: 'Idli Sambhar', type: 0},
   {name: 'Sabudana Khichdi', type: 0},
   {name: 'Poha', type: 0},
-  {name: 'Veg Sandwich', type: 1},
+  {name: 'Veg Sandwich', type: 0},
   {name: 'Suji Cheela', type: 1},
   {name: 'Sewaiyan', type: 1},
   {name: 'Mooli Paranthe', type: 1},
