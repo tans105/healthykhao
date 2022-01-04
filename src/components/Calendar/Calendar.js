@@ -28,51 +28,37 @@ class Calendar extends React.Component {
     }
   }
 
-  render() {
+  populateMeal(timeOfDay) {
     const {schedule} = this.props;
+    const meals = [];
+    for (let i = 0; i < 7; i++) meals.push(this.getCell(schedule[i][timeOfDay]))
+    return meals;
+  }
+
+  render() {
+    const breakfasts = this.populateMeal(0);
+    const lunch = this.populateMeal(1);
+    const dinner = this.populateMeal(2);
 
     return (
       <div className="calendar-body">
         <table>
           <tr>
             <th>Schedule</th>
-            {WEEK.map((day, i) => <th key={i} className="cell week-day">{day.label}</th>)}
-          </tr>
-
-          {/*Breakfast*/}
+            {WEEK.map((day, i) => <th key={i} className="cell week-day">{day.label}</th>)}</tr>
           <tr>
             <td className="meal">{MEALS[0]}</td>
-            {this.getCell(schedule[0][0])}
-            {this.getCell(schedule[1][0])}
-            {this.getCell(schedule[2][0])}
-            {this.getCell(schedule[3][0])}
-            {this.getCell(schedule[4][0])}
-            {this.getCell(schedule[5][0])}
-            {this.getCell(schedule[6][0])}
+            {breakfasts}
           </tr>
 
-          {/*Lunch*/}
           <tr>
             <td className="meal">{MEALS[1]}</td>
-            {this.getCell(schedule[0][1])}
-            {this.getCell(schedule[1][1])}
-            {this.getCell(schedule[2][1])}
-            {this.getCell(schedule[3][1])}
-            {this.getCell(schedule[4][1])}
-            {this.getCell(schedule[5][1])}
-            {this.getCell(schedule[6][1])}
+            {lunch}
           </tr>
 
-          {/*Dinner*/}
           <tr>
             <td className="meal">{MEALS[2]}</td>
-            {this.getCell(schedule[0][2])}
-            {this.getCell(schedule[1][2])}
-            {this.getCell(schedule[2][2])}
-            {this.getCell(schedule[3][2])}
-            {this.getCell(schedule[4][2])}
-            {this.getCell(schedule[5][2])}
-            {this.getCell(schedule[6][2])}
+            {dinner}
           </tr>
         </table>
       </div>

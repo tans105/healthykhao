@@ -1,4 +1,4 @@
-import {getConfigurations} from "./configuration.service";
+import {getConfigurations} from "./configuration";
 import {BREAKFAST, MAIN_COURSE} from "./datastore";
 import {BREAKFAST_DISH_TYPE, MAIN_COURSE_DISH_TYPE} from "./constants";
 
@@ -18,9 +18,9 @@ const prepare = () => {
     const dayRoutine = [];
     configuration.forEach((meal, index) => {
       if (index === 0) {  // breakfast
-        dayRoutine[index] = getDish(BREAKFAST_DISH_TYPE, meal.id);
+        dayRoutine[index] = getDish(BREAKFAST_DISH_TYPE, meal.id, index);
       } else { // main course
-        dayRoutine[index] = getDish(MAIN_COURSE_DISH_TYPE, meal.id);
+        dayRoutine[index] = getDish(MAIN_COURSE_DISH_TYPE, meal.id, index);
       }
     })
 
@@ -30,7 +30,7 @@ const prepare = () => {
   return schedule;
 }
 
-const getDish = ({id}, dishHealthIndex) => {
+const getDish = ({id}, dishHealthIndex, timeOfDay) => {
   if(dishHealthIndex === 3) { // anything
     return 'NA';
   }
@@ -48,19 +48,23 @@ const getDish = ({id}, dishHealthIndex) => {
 
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    const randomnumber = Math.floor(Math.random() * (count + 1));
+    const idx = Math.floor(Math.random() * (count + 1));
+    const currentDish = dishes[idx]
 
     if (id === BREAKFAST_DISH_TYPE.id) {
-      if (!rejected_breakfast[randomnumber] && dishes[randomnumber] && dishes[randomnumber].type === dishHealthIndex) {
-        rejected_breakfast[randomnumber] = -1;
-        dish = dishes[randomnumber];
+      if (!rejected_breakfast[idx] && currentDish && currentDish.type === dishHealthIndex) {
+        rejected_breakfast[idx] = -1;
+        dish = currentDish;
         break;
       }
     } else if (id === MAIN_COURSE_DISH_TYPE.id) {
-      if (!rejected_main_course[randomnumber] && dishes[randomnumber] && dishes[randomnumber].type === dishHealthIndex) {
-        rejected_main_course[randomnumber] = -1;
-        dish = dishes[randomnumber];
-        break;
+      if (!rejected_main_course[idx] && currentDish && currentDish.type === dishHealthIndex) {
+        const dishAllowedTime = currentDish.allowedTime;
+        if(dishAllowedTime === 3 || (dishAllowedTime === timeOfDay)) {
+          rejected_main_course[idx] = -1;
+          dish = dishes[idx];
+          break;
+        }
       }
     }
   }

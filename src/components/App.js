@@ -2,7 +2,7 @@ import logo from '../icon.png'
 import './App.css'
 
 import React from 'react'
-import {prepare, reset} from "../service/schedule.service";
+import {prepare, reset} from "../service/scheduler";
 import Calendar from "./Calendar/Calendar";
 
 class App extends React.Component {
@@ -24,12 +24,7 @@ class App extends React.Component {
 
   showSchedule() {
     const {generateSchedule, schedule} = this.state;
-
-    if (generateSchedule) {
-      return <Calendar schedule={schedule}/>
-    } else {
-      return null
-    }
+    return generateSchedule ? <Calendar schedule={schedule}/> : null
   }
 
   render() {
@@ -37,16 +32,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
-          <p>
-            Ready to generate the weekly menu? Click on the <strong>Button</strong> below.
-          </p>
+          <p>Ready to generate the weekly menu? Click on the <strong>Button</strong> below.</p>
           {this.showSchedule()}
-          <button
-            className="button-three"
-            onClick={() => this.generate()}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <button className="button-three" onClick={() => this.generate()} target="_blank" rel="noopener noreferrer">
             Generate
           </button>
         </header>
