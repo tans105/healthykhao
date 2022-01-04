@@ -33,11 +33,13 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header/>
-        <p>Ready to generate the weekly menu? Click on the <strong>Button</strong> below.</p>
-        {this.showSchedule()}
-        <button className="button-generate" onClick={() => this.generate()} target="_blank" rel="noopener noreferrer">
-          Generate
-        </button>
+        <div className="app-body">
+          <p className="text-content">Ready to generate the weekly menu? Click on the <strong>Button</strong> below.</p>
+          {this.showSchedule()}
+          <button className="button-generate" onClick={() => this.generate()} target="_blank" rel="noopener noreferrer">
+            Generate
+          </button>
+        </div>
         <Footer/>
       </div>
     )

@@ -1,5 +1,5 @@
 .app-logo {
-    height: 30vmin;
+    height: 20vmin;
     pointer-events: none;
 }
 
@@ -12,11 +12,11 @@
 .app-header {
     background-color: #282c34;
     display: flex;
-    flex-direction: column;
+    font-weight: 800;
+    color: #2ba22c;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    font-size: calc(20px + 2vmin);
 }
 
 @keyframes app-logo-spin {

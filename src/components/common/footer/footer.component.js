@@ -11,8 +11,13 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="dev-info">
-        <span>Have a business to expand? Contact our website </span>
-        <a target="_blank" href="https://www.linkedin.com/in/tanmayawasthi105/" rel="noreferrer">Developer</a>.
+        <div className="marquee">
+          <span>Have a business to expand? Contact our website &nbsp;
+            <a target="_blank"
+               href="https://www.linkedin.com/in/tanmayawasthi105/"
+               rel="noreferrer">Developer</a>.
+          </span>
+        </div>
       </div>
     )
   }
